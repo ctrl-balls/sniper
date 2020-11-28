@@ -162,22 +162,22 @@ for (const token of tokens) {
         }
     })
 
-    client.on('ready', () => {
+    client.on('shardReady', () => {
         if (token === mainToken) console.log(chalk`{magenta [Nitro Sniper]} {cyan (INFO)} {blue Main token valid: ${client.user.tag} - Sniping in ${client.guilds.size} servers.}`)
         else console.log(chalk`{magenta [Nitro Sniper]} {cyan (INFO)} {cyan Slave logged in as ${client.user.tag} - Sniping in ${client.guilds.size} servers.}`)
 
     })
-    /*
-    client.on('error', error => {
+
+    client.on('shardError', error => {
         console.log(chalk`{magenta [Nitro Sniper]} {rgb(242,46,46) (ERROR)} {red Token [${token.substring(0, 10)}...] encountered a connection error: ${error}.}`);
     })
-    client.on('reconnecting', () => {
+    client.on('shardReconnecting', () => {
         console.log(chalk`{magenta [Nitro Sniper]} {cyan (INFO)} {rgb(255,245,107) Attempting to reconnect token [${token.substring(0, 10)}...]}.`);
     })
-    client.on('resume', () => {
+    client.on('shardResume', () => {
         console.log(chalk`{magenta [Nitro Sniper]} {cyan (INFO)} {blueBright Token [${token.substring(0, 10)}...] reconnected successfully!}`);
     })
-     */
+
     setTimeout(() => {
         client.login(token)
             .catch(function (err) {
